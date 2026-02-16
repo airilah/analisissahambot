@@ -18,8 +18,14 @@ from scanner import (
     format_breakout_message,
 )
 
+from dotenv import load_dotenv
 
-TOKEN = "8421191326:AAHmMfMWUDdwmERxKNyDDChDiqUGhdN7vYA"
+
+load_dotenv()
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+# TOKEN = "8421191326:AAHmMfMWUDdwmERxKNyDDChDiqUGhdN7vYA"
+
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -135,7 +141,7 @@ async def breakout(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logging.exception("Error saat scan breakout")
         await update.message.reply_text(f"❌ Error saat scan breakout:\n{repr(e)}")
 
-        
+
 async def analyze_stock(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ticker = update.message.text.strip().upper()
     await update.message.reply_text(f"🔎 Menganalisa {ticker} ...")
