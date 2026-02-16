@@ -1,0 +1,10 @@
+python-telegram-bot==20.7
+pandas
+numpy
+requests
+yfinance
+ta
+matplotlib
+mplfinance
+lxml
+python-dotenv
